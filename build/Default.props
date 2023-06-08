@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+
+  <PropertyGroup>
+    <EnlistmentRoot>$(MSBuildThisFileDirectory.TrimEnd('\\'))\..</EnlistmentRoot>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x64</Platform>
+    <Platforms>AnyCPU;x64</Platforms>
+  
+    <BuildArtifactsPath>$(EnlistmentRoot)\artifacts</BuildArtifactsPath>
+    <BaseIntermediateOutputPath>$(BuildArtifactsPath)\obj\$(Platform)\$(Configuration)\$(MSBuildProjectName)</BaseIntermediateOutputPath>
+    <BaseOutputPath Condition="'$(BaseOutputPath)' == ''">$(BuildArtifactsPath)\bin\$(Platform)\$(Configuration)\$(MSBuildProjectName)</BaseOutputPath>
+    <OutputPath Condition="'$(IsWebApplication)' != 'true'">$(BaseOutputPath)</OutputPath>
+    <OutputPath Condition="'$(IsWebApplication)' == 'true'">$(BaseOutputPath)\bin</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+
+    <RestorePackagesPath>$(EnlistmentRoot)\packages</RestorePackagesPath>
+
+    <RunStaticCodeAnalysis Condition="'$(RunStaticCodeAnalysis)' == ''">true</RunStaticCodeAnalysis>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" />
+
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <DebugSymbols Condition="'$(DebugSymbols)' == ''">true</DebugSymbols>
+    <Optimize Condition="'$(Optimize)' == ''">false</Optimize>
+    <DebugType Condition="'$(DebugType)' == ''">full</DebugType>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <DebugSymbols Condition="'$(DebugSymbols)' == ''">true</DebugSymbols>
+    <Optimize Condition="'$(Optimize)' == ''">true</Optimize>
+    <DebugType Condition="'$(DebugType)' == ''">full</DebugType>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(RunStaticCodeAnalysis)' == 'true'">
+    <PackageReference Include="Stylecop.Analyzers" Version="1.1.0-beta001">
+      <PrivateAssets>All</PrivateAssets>
+    </PackageReference>
+
+    <PackageReference Include="SonarAnalyzer.CSharp" Version="6.3.0.2862">
+      <PrivateAssets>All</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <PropertyGroup>
+    <CodeAnalysisRuleSet Condition=" '$(CodeAnalysisRuleSet)' == '' ">$(MSBuildThisFileDirectory)\CodeAnalysis.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
+</Project>

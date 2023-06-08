@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net462</TargetFramework>
+    <Platform>x64</Platform>
+    <PlatformTarget>x64</PlatformTarget>
+    <RootNamespace>Microsoft.Bing.Multimedia.APWebServiceCore</RootNamespace>
+    <AssemblyName>Microsoft.Bing.Multimedia.APWebServiceCore</AssemblyName>
+    <PackageId>Microsoft.Bing.Multimedia.APWebServiceCore</PackageId>
+    <PackageVersion>1.1.1</PackageVersion>
+    <Authors>andar,rustamm</Authors>
+    <Title>AP WebService Core</Title>
+    <Description>A library for bootstrapping ASP .NET Core 2 web app ready for deployment to Autopilot.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="APSDK.Managed.Core" Version="21.8.23005" />
+    <PackageReference Include="APSecurity.SDK.amd64" Version="21.8.17010">
+      <PrivateAssets>contentFiles;analyzers</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Hosting" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Server.Kestrel" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Server.Kestrel.Https" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="2.0.0" />
+    <PackageReference Include="System.Text.Encodings.Web" Version="4.5.1" />
+  </ItemGroup>
+</Project>
